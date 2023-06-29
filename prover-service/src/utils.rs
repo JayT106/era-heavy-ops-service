@@ -113,8 +113,8 @@ pub fn generate_setup_for_circuit(prover: &mut Prover, circuit: &ZkSyncCircuit) 
     let log_size = (Prover::get_max_domain_size()).trailing_zeros();
     let mut setup_assembly = Prover::new_setup_assembly();
 
-    println!("n:{} num_table_lookups:{} total_length_of_all_tables:{}",setup_assembly.n(), setup_assembly.num_table_lookups, setup_assembly.total_length_of_all_tables);
     circuit.synthesize(&mut setup_assembly).unwrap();
+    println!("n:{} num_table_lookups:{} total_length_of_all_tables:{}",setup_assembly.n(), setup_assembly.num_table_lookups, setup_assembly.total_length_of_all_tables);
     setup_assembly.finalize_to_size_log_2(log_size as usize);
 
     let start = std::time::Instant::now();
