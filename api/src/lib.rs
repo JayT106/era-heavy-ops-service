@@ -75,7 +75,7 @@ pub type ProvingAssembly = Assembly<SynthesisModeProve>;
 pub type SetupAssembly = Assembly<SynthesisModeGenerateSetup>;
 
 pub(crate) const CRS_FILE_ENV_VAR: &str = "CRS_FILE";
-pub(crate) const DOMAIN_SIZE_LOG: usize = 22;
+pub(crate) const DOMAIN_SIZE_LOG: usize = 26;
 pub(crate) const DOMAIN_SIZE: usize = 1 << DOMAIN_SIZE_LOG;
 pub(crate) const NUM_LOOKUP_TABLES: usize = 10;
 pub(crate) const MAX_NUM_LOOKUP_ENTRIES: usize = 41000000; // ~40M
