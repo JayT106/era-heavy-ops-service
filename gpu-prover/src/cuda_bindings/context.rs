@@ -25,12 +25,18 @@ const POWERS_OF_COSET_OMEGA_COARSE_LOG_COUNT: u32 = 14;
 
 impl GpuContext {
     pub fn new_full(device_id: usize, bases: &[CompactG1Affine]) -> GpuResult<Self> {
+        dbg!("new_full");
         let mut ctx = Self::new(device_id)?;
 
+        dbg!("1");
         ctx.set_up_ff()?;
+        dbg!("2");
         ctx.set_up_ntt()?;
+        dbg!("3");
         ctx.set_up_pn()?;
+        dbg!("4");
         ctx.set_up_msm(bases)?;
+        dbg!("5");
         ctx.set_up_mem_pool()?;
 
         Ok(ctx)
@@ -81,6 +87,7 @@ impl GpuContext {
     }
 
     pub fn new_with_affinity(device_id: usize, affinity_devices: &[usize]) -> GpuResult<Self> {
+        dbg!("new_with_affinity");
         assert!(device_id < devices()? as usize);
         set_device(device_id)?;
         let devices = devices()? as usize;
