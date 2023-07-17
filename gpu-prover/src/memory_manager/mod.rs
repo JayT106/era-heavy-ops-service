@@ -41,9 +41,13 @@ impl<F: PrimeField, MC: ManagerConfigs> DeviceMemoryManager<F, MC> {
         for (device_id, bases_chunk) in device_ids.iter().zip(bases.chunks(MC::SLOT_SIZE)) {
             let mut context = GpuContext::new_with_affinity(*device_id, device_ids)?;
 
+            dbg!("dbg1");
             context.set_up_ff()?;
+            dbg!("dbg2");
             context.set_up_ntt()?;
+            dbg!("dbg3");
             context.set_up_pn()?;
+            dbg!("dbg4");
             context.set_up_msm(bases_chunk)?;
 
             ctx.push(context);
